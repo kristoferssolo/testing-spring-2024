@@ -1,6 +1,6 @@
 # Overview
 
-![Tests](https://github.com/jorenchik/testing-spring-2024/actions/workflows/tests.yml/badge.svg)
+[![Tests](https://github.com/jorenchik/testing-spring-2024/actions/workflows/test.yml/badge.svg)](https://github.com/jorenchik/testing-spring-2024/actions/workflows/test.yml)
 
 ## Project
 
