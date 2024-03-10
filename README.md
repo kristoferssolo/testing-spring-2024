@@ -23,7 +23,7 @@ Compilation on Linux requires cmake and CXX compiler (e.g., g++).
 ### ninja
 
 ```bash
-cmake -G ninja -B build
+cmake -Gninja -Bbuild
 cd build
 ninja
 ./main
@@ -32,7 +32,7 @@ ninja
 ### Make
 
 ```bash
-cmake -B build
+cmake -Bbuild
 cd build
 make
 ./main
