@@ -3,13 +3,14 @@
 #include "prep/prep.hh"
 
 #include <algorithm>
+#include <iostream>
+#include <ostream>
 #include <vector>
 
 enum VALIDATION_STATUS {
     NO_PLAYER,
     ROOM_NOT_IN_PROGRESS,
     ACTION_PROHIBITED,
-    ACTION_NOT_ALLOWED,
     NO_ROLE,
     ACTION_VALID,
 };
@@ -22,14 +23,18 @@ void run() {
     const Action vote = Action("vote", true);
     Role role1({vote, kill, heal});
     Role role2({heal});
-    Event event1 = Event("Event 1", 1710087364, 1, true, {vote}, {}, {});
-    Event event2 = Event("Event 2", 1710087364, 1, true, {}, {}, {kill});
-    Event event3 = Event("Event 3", 1710087364, 1, true, {}, {kill}, {});
-    std::vector<Event> relatedEvents({event1, event3});
+    Event event1 = Event("Event 1", 1710087355, 1, true, {vote}, {}, {});
+    Event event2 = Event("Event 2", 1710087363, 1, true, {}, {kill}, {});
+    Event event3 = Event("Event 3", 1710087369, 1, true, {}, {}, {kill});
+    std::vector<Event> relatedEvents({event2, event3});
+    Player player1 = Player("player1", role1, PlayerStatus::ALIVE);
+    Player player2 = Player("player2", role1, PlayerStatus::ALIVE);
+    int actionValidated = validateAction(&player1, &kill, &room1, &relatedEvents, &player2);
+    std::cout << actionValidated << std::endl;
 }
 
 int validateAction(
-  Player *actor, Action *action, Room *room, std::vector<Event> *relatedEvents, Player *target = nullptr) {
+  Player *actor, const Action *action, Room *room, std::vector<Event> *relatedEvents, Player *target = nullptr) {
     if (!actor) {
         return NO_PLAYER;
     }
@@ -44,7 +49,7 @@ int validateAction(
         return NO_ROLE;
     }
     if (!actionBelongsToRole(role, action)) {
-        return ACTION_NOT_ALLOWED;
+        return ACTION_PROHIBITED;
     }
     if (!isActionAllowed(action, relatedEvents)) {
         return ACTION_PROHIBITED;
@@ -52,13 +57,11 @@ int validateAction(
     return ACTION_VALID;
 }
 
-bool actionBelongsToRole(Role *role, Action *action) {
-    // TODO: implement
-    bool belongs = false;
-    return belongs;
+bool actionBelongsToRole(Role *role, const Action *action) {
+    return std::find(role->actions.begin(), role->actions.end(), *action) != role->actions.end();
 }
 
-bool isActionAllowed(Action *action, std::vector<Event> *relevantEvents) {
+bool isActionAllowed(const Action *action, std::vector<Event> *relevantEvents) {
     // actions are disabled by default
     bool allowed = false;
     std::sort(relevantEvents->begin(), relevantEvents->end());

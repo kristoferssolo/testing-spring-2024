@@ -2,7 +2,7 @@
 
 void run();
 
-bool actionBelongsToRole(Role *role, Action *action);
-bool isActionAllowed(Action *action, std::vector<Event> *relevantEvents);
-int validateAction(Player *actor, Action *action, Room *room, std::vector<Event> *relatedEvents, Player *target);
+bool actionBelongsToRole(Role *role, const Action *action);
+bool isActionAllowed(const Action *action, std::vector<Event> *relevantEvents);
+int validateAction(Player *actor, const Action *action, Room *room, std::vector<Event> *relatedEvents, Player *target);
 int functionToTest(int);
