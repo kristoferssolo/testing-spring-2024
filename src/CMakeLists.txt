@@ -9,17 +9,17 @@ project(
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-add_subdirectory(Cppunit)
-add_subdirectory(Prep)
+add_subdirectory(cppunit)
+add_subdirectory(prep)
 
 add_executable(main main.cpp)
-add_library(mainLib main_lib.cpp main_lib.h)
-target_link_libraries(main PUBLIC mainLib)
-target_link_libraries(mainLib PUBLIC prepLib)
+add_library(lib lib.cpp lib.hh)
+target_link_libraries(main PUBLIC lib)
+target_link_libraries(lib PUBLIC prepLib)
 target_include_directories(main PUBLIC "${PROJECT_BINARY_DIR}"
-                                       "${PROJECT_SOURCE_DIR}/Prep")
-target_include_directories(mainLib PUBLIC "${PROJECT_BINARY_DIR}"
-                                          "${PROJECT_SOURCE_DIR}/Prep")
+                                       "${PROJECT_SOURCE_DIR}/prep")
+target_include_directories(lib PUBLIC "${PROJECT_BINARY_DIR}"
+                                      "${PROJECT_SOURCE_DIR}/prep")
 
 include(FetchContent)
 FetchContent_Declare(
@@ -29,7 +29,7 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(googletest)
 
 add_executable(runtests test.cpp)
-target_link_libraries(runtests PUBLIC mainLib gtest gtest_main)
+target_link_libraries(runtests PUBLIC lib gtest gtest_main)
 target_include_directories(runtests PUBLIC "${PROJECT_BINARY_DIR}")
 
 include(GoogleTest)
