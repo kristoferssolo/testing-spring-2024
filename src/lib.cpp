@@ -53,9 +53,7 @@ int validateAction(
 }
 
 bool actionBelongsToRole(Role *role, Action *action) {
-    // TODO: implement
-    bool belongs = false;
-    return belongs;
+    return std::find(role->actions.begin(), role->actions.end(), *action) != role->actions.end();
 }
 
 bool isActionAllowed(Action *action, std::vector<Event> *relevantEvents) {
