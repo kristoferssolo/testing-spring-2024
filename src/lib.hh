@@ -1,6 +1,8 @@
 #include "prep/prep.hh"
 
 void run();
-int validateAction(
-  Player *actor, Action *action, Room *room, std::vector<Event> *relatedEvents, Player *target = nullptr);
+
+bool actionBelongsToRole(Role *role, Action *action);
+bool isActionAllowed(std::vector<Event> *relevantEvents);
+int validateAction(Player *actor, Action *action, Room *room, std::vector<Event> *relatedEvents, Player *target);
 int functionToTest(int);
