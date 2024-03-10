@@ -16,9 +16,11 @@ enum VALIDATION_STATUS {
 void run() {
     Room room1(1, "Room 1", 1710087364, RoomStatus::IN_PROGRESS);
     Room room2(2, "Room 2", 1710087384, RoomStatus::ENDED);
-    Role role1({Action::KILL, Action::HEAL});
-    std::vector<Action> actions = {Action::HEAL};
-    Role role2(actions);
+    const Action kill = Action("kill", true);
+    const Action heal = Action("heal", true);
+    const Action vote = Action("vote", true);
+    Role role1({vote, kill, heal});
+    Role role2({heal});
 }
 
 int validateAction(
@@ -26,7 +28,9 @@ int validateAction(
     if (!actor) {
         return NO_PLAYER;
     }
-    // TODO: Check if action has a target
+    if (action->hasTarget && !target) {
+        return NO_PLAYER;
+    }
     if (room->status != RoomStatus::IN_PROGRESS) {
         return ROOM_NOT_IN_PROGRESS;
     }

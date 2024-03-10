@@ -8,6 +8,11 @@ int add(int a, int b) {
     return a + b;
 }
 
+Action::Action(std::string name, bool hasTarget) {
+    this->name = name;
+    this->hasTarget = hasTarget;
+}
+
 Role::Role(std::initializer_list<Action> actions) {
     for (auto &a : actions) {
         this->actions.push_back(a);
