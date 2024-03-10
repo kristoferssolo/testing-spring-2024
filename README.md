@@ -1,7 +1,7 @@
 # Overview
 
 [![Tests](https://github.com/jorenchik/testing-spring-2024/actions/workflows/test.yml/badge.svg)](https://github.com/jorenchik/testing-spring-2024/actions/workflows/test.yml)
-
+[Latvian](./README-lv.md)
 ## Project
 
 This is a simple C++ project that includes the function for our colleagues to
@@ -43,5 +43,5 @@ run tests specified in `test.cpp`.
 
 ## TODOS
 
-- [ ] Translate README in Latvian
+- [x] Translate README in Latvian
 - [ ] Check the compilation process on Windows and add description in README
