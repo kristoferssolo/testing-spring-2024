@@ -2,14 +2,14 @@
 
 ## Project
 
-This is a simple C++ project that includes the function for our collegues to
+This is a simple C++ project that includes the function for our colleagues to
 test. The function (i.e., the main function and the subfunctions used in it) is
 located in ``main_lib.cpp``.
 
-## Additional libraries and executables
+## Additional libraries and executable
 
 Our library ``Prep`` is concerned with preparation of data prior to the function
-call. ``test.cpp`` is a single test file that will contain the tests of our collegues
+call. ``test.cpp`` is a single test file that will contain the tests of our colleagues
 and our own development tests. GTest is used for tests.
 
 # Usage
@@ -32,3 +32,4 @@ run tests specified in ``test.cpp``.
 # TODOS
 
 - Translate README in Latvian
+- Check the compilation process on Windows and add description in README
