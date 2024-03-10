@@ -9,11 +9,11 @@ project(
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-add_subdirectory(cppunit)
-add_subdirectory(prep)
+add_subdirectory(src/cppunit)
+add_subdirectory(src/prep)
 
-add_executable(main main.cpp)
-add_library(lib lib.cpp lib.hh)
+add_executable(main src/main.cpp)
+add_library(lib src/lib.cpp src/lib.hh)
 target_link_libraries(main PUBLIC lib)
 target_link_libraries(lib PUBLIC prepLib)
 target_include_directories(main PUBLIC "${PROJECT_BINARY_DIR}"
@@ -28,7 +28,7 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(googletest)
 
-add_executable(runtests test.cpp)
+add_executable(runtests src/test.cpp)
 target_link_libraries(runtests PUBLIC lib gtest gtest_main)
 target_include_directories(runtests PUBLIC "${PROJECT_BINARY_DIR}")
 
