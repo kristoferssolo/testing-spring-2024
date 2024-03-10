@@ -47,12 +47,17 @@ struct Event;
 
 struct Role {
     std::vector<Action> actions;
+
+    Role(std::initializer_list<Action> actions);
+    Role(std::vector<Action> actions);
 };
 
 struct Player {
     std::string username;
     Role role;
     PlayerStatus playerStatus;
+
+    Player(std::string username, Role role, PlayerStatus playerStatus);
 };
 
 struct Room {
@@ -71,6 +76,8 @@ struct Event {
     bool isVisible;
     std::vector<Action> causedBy;
     std::vector<Action> influenced;
+
+    Event(std::string title, uint32_t utcTimestampCreatedAt, uint32_t numberNight, bool isVisible);
 };
 
 #endif
