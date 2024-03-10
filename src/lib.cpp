@@ -10,6 +10,19 @@ void run() {
     Role role2(actions);
 }
 
+enum VALIDATION_STATUS {
+    NO_PLAYER,
+    ROOM_NOT_IN_PROGRESS,
+    ACTION_PROHIBITED,
+    ACTION_NOT_ALLOWED,
+    ACTION_VALID,
+};
+
+int validateAction(
+  Player *actor, Action *action, Room *room, std::vector<Event> *relatedEvents, Player *target = nullptr) {
+    return ACTION_VALID;
+}
+
 int functionToTest(int a) {
     return a * 2;
 }
