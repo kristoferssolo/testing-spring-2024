@@ -1,5 +1,7 @@
 # Overview
 
+![Tests](https://github.com/jorenchik/testing-spring-2024/actions/workflows/tests.yml/badge.svg)
+
 ## Project
 
 This is a simple C++ project that includes the function for our colleagues to
@@ -21,7 +23,7 @@ Compilation on Linux requires cmake and CXX compiler (e.g., g++).
 ### ninja
 
 ```bash
-cmake -Gninja -Bbuild
+cmake -G ninja -B build
 cd build
 ninja
 ./main
@@ -30,7 +32,7 @@ ninja
 ### Make
 
 ```bash
-cmake -Bbuild
+cmake -B build
 cd build
 make
 ./main
