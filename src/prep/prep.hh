@@ -42,6 +42,7 @@ struct Action {
     bool hasTarget;
 
     Action(std::string name, bool hasTarget);
+    bool operator==(const Action &other) const;
 };
 
 struct Role {
@@ -76,6 +77,10 @@ struct Event {
     std::vector<Action> causedBy;
     std::vector<Action> prohibits;
     std::vector<Action> allows;
+
+    bool operator<(const Event &other) const;
+    bool operator==(const Event &other) const;
+    bool operator>(const Event &other) const;
 
     Event(std::string title,
           uint32_t utcTimestampCreatedAt,

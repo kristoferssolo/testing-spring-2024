@@ -13,6 +13,10 @@ Action::Action(std::string name, bool hasTarget) {
     this->hasTarget = hasTarget;
 }
 
+bool Action::operator==(const Action &other) const {
+    return this->name == other.name;
+}
+
 Role::Role(std::initializer_list<Action> actions) {
     for (auto &a : actions) {
         this->actions.push_back(a);
@@ -76,4 +80,16 @@ Event::Event(std::string title,
           std::vector<Action>(prohibits),
           std::vector<Action>(allows)) {
     this->utcTimestampCreatedAt = createUTCTimestamp(utcTimestampCreatedAt);
+}
+
+bool Event::operator<(const Event &right) const {
+    return this->utcTimestampCreatedAt < right.utcTimestampCreatedAt;
+}
+
+bool Event::operator==(const Event &right) const {
+    return this->utcTimestampCreatedAt == right.utcTimestampCreatedAt;
+}
+
+bool Event::operator>(const Event &right) const {
+    return this->utcTimestampCreatedAt > right.utcTimestampCreatedAt;
 }

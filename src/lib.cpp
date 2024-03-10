@@ -2,6 +2,7 @@
 
 #include "prep/prep.hh"
 
+#include <algorithm>
 #include <vector>
 
 enum VALIDATION_STATUS {
@@ -21,6 +22,10 @@ void run() {
     const Action vote = Action("vote", true);
     Role role1({vote, kill, heal});
     Role role2({heal});
+    Event event1 = Event("Event 1", 1710087364, 1, true, {vote}, {}, {});
+    Event event2 = Event("Event 2", 1710087364, 1, true, {}, {}, {kill});
+    Event event3 = Event("Event 3", 1710087364, 1, true, {}, {kill}, {});
+    std::vector<Event> relatedEvents({event1, event3});
 }
 
 int validateAction(
@@ -41,7 +46,7 @@ int validateAction(
     if (!actionBelongsToRole(role, action)) {
         return ACTION_NOT_ALLOWED;
     }
-    if (!isActionAllowed(relatedEvents)) {
+    if (!isActionAllowed(action, relatedEvents)) {
         return ACTION_PROHIBITED;
     }
     return ACTION_VALID;
@@ -53,9 +58,18 @@ bool actionBelongsToRole(Role *role, Action *action) {
     return belongs;
 }
 
-bool isActionAllowed(std::vector<Event> *relevantEvents) {
-    // TODO: implement
+bool isActionAllowed(Action *action, std::vector<Event> *relevantEvents) {
+    // actions are disabled by default
     bool allowed = false;
+    std::sort(relevantEvents->begin(), relevantEvents->end());
+    for (auto &event : *relevantEvents) {
+        if (std::find(event.prohibits.begin(), event.prohibits.end(), *action) != event.prohibits.end()) {
+            allowed = false;
+        }
+        if (std::find(event.allows.begin(), event.allows.end(), *action) != event.allows.end()) {
+            allowed = true;
+        }
+    }
     return allowed;
 }
 
