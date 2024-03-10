@@ -1,7 +1,9 @@
 # Overview
 
 [![Tests](https://github.com/jorenchik/testing-spring-2024/actions/workflows/test.yml/badge.svg)](https://github.com/jorenchik/testing-spring-2024/actions/workflows/test.yml)
+
 [Latvian](./README-lv.md)
+
 ## Project
 
 This is a simple C++ project that includes the function for our colleagues to
