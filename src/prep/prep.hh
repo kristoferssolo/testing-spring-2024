@@ -18,14 +18,6 @@ enum EventType {
     PLAYER_STATE_CHANGE,
 };
 
-enum Action {
-    KILL,
-    VOTE,
-    INVESTIGATE,
-    HEAL,
-    PROTECT,
-};
-
 enum RoomStatus {
     AWAITING_START,
     IN_PROGRESS,
@@ -44,6 +36,14 @@ struct Role;
 struct Player;
 struct Room;
 struct Event;
+
+struct Action {
+    std::string name;
+    bool hasTarget;
+
+    Action(std::string name, bool hasTarget);
+    bool operator==(const Action &other) const;
+};
 
 struct Role {
     std::vector<Action> actions;
@@ -77,6 +77,10 @@ struct Event {
     std::vector<Action> causedBy;
     std::vector<Action> prohibits;
     std::vector<Action> allows;
+
+    bool operator<(const Event &other) const;
+    bool operator==(const Event &other) const;
+    bool operator>(const Event &other) const;
 
     Event(std::string title,
           uint32_t utcTimestampCreatedAt,
