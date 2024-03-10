@@ -75,9 +75,23 @@ struct Event {
     uint32_t numberNight;
     bool isVisible;
     std::vector<Action> causedBy;
-    std::vector<Action> influenced;
+    std::vector<Action> prohibits;
+    std::vector<Action> allows;
 
-    Event(std::string title, uint32_t utcTimestampCreatedAt, uint32_t numberNight, bool isVisible);
+    Event(std::string title,
+          uint32_t utcTimestampCreatedAt,
+          uint32_t numberNight,
+          bool isVisible,
+          std::vector<Action> causedBy,
+          std::vector<Action> prohibits,
+          std::vector<Action> allows);
+    Event(std::string title,
+          uint32_t utcTimestampCreatedAt,
+          uint32_t numberNight,
+          bool isVisible,
+          std::initializer_list<Action> causedBy,
+          std::initializer_list<Action> prohibits,
+          std::initializer_list<Action> allows);
 };
 
 #endif
