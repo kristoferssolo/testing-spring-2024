@@ -11,10 +11,34 @@
 int add(int a, int b);
 
 // All IDs are uint32_t
-enum EventType { PHASE_CHANGE, ACTION, ROOM_STATE_CHANGE, PLAYER_STATE_CHANGE };
-enum Action { KILL, VOTE, INVESTIGATE, HEAL, PROTECT };
-enum RoomStatus { AWAITING_START, IN_PROGRESS, STOPPED, ENDED };
-enum PlayerStatus { KICKED, ALIVE, DEAD, VOTED_OUT };
+enum EventType {
+    PHASE_CHANGE,
+    ACTION,
+    ROOM_STATE_CHANGE,
+    PLAYER_STATE_CHANGE,
+};
+
+enum Action {
+    KILL,
+    VOTE,
+    INVESTIGATE,
+    HEAL,
+    PROTECT,
+};
+
+enum RoomStatus {
+    AWAITING_START,
+    IN_PROGRESS,
+    STOPPED,
+    ENDED,
+};
+
+enum PlayerStatus {
+    KICKED,
+    ALIVE,
+    DEAD,
+    VOTED_OUT,
+};
 
 struct Role;
 struct Player;
