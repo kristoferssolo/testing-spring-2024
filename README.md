@@ -1,5 +1,7 @@
 # Overview
 
+![Tests](https://github.com/jorenchik/testing-spring-2024/actions/workflows/tests.yml/badge.svg)
+
 ## Project
 
 This is a simple C++ project that includes the function for our colleagues to
