@@ -53,11 +53,13 @@ struct Role {
 };
 
 struct Player {
+    uint32_t id;
     std::string username;
     Role role;
     PlayerStatus playerStatus;
 
-    Player(std::string username, Role role, PlayerStatus playerStatus);
+    Player(uint32_t id, std::string username, Role role, PlayerStatus playerStatus);
+    bool operator==(const Player &other) const;
 };
 
 struct Room {

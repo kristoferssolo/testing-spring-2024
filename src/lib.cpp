@@ -8,6 +8,7 @@
 #include <vector>
 
 enum VALIDATION_STATUS {
+    PLAYER_NOT_IN_ROOM,
     NO_PLAYER,
     ROOM_NOT_IN_PROGRESS,
     ACTION_PROHIBITED,
@@ -25,9 +26,9 @@ void run() {
     Event event2 = Event("Event 2", 1710087363, 1, true, {kill}, {});
     Event event3 = Event("Event 3", 1710087369, 1, true, {}, {kill});
     std::vector<Event> relatedEvents({event2, event3});
-    Player player1 = Player("player1", role1, PlayerStatus::ALIVE);
-    Player player2 = Player("player2", role1, PlayerStatus::ALIVE);
-    Room room1(1, "Room 1", 1710087364, RoomStatus::IN_PROGRESS, {player1, player2});
+    Player player1 = Player(69, "player1", role1, PlayerStatus::ALIVE);
+    Player player2 = Player(420, "player2", role1, PlayerStatus::ALIVE);
+    Room room1(1, "Room 1", 1710087364, RoomStatus::IN_PROGRESS, {});
     Room room2(2, "Room 2", 1710087384, RoomStatus::ENDED, {player1, player2});
     int actionValidated = validateAction(&player1, &kill, &room1, &relatedEvents, &player2);
     std::cout << actionValidated << std::endl;
@@ -35,6 +36,9 @@ void run() {
 
 int validateAction(
   Player *actor, const Action *action, Room *room, std::vector<Event> *relatedEvents, Player *target = nullptr) {
+    if (!playerBelongsToRoom(actor, room)) {
+        return PLAYER_NOT_IN_ROOM;
+    }
     if (!actor) {
         return NO_PLAYER;
     }
@@ -55,6 +59,10 @@ int validateAction(
         return ACTION_PROHIBITED;
     }
     return ACTION_VALID;
+}
+
+bool playerBelongsToRoom(Player *player, Room *room) {
+    return std::find(room->players.begin(), room->players.end(), *player) != room->players.end();
 }
 
 bool actionBelongsToRole(Role *role, const Action *action) {
