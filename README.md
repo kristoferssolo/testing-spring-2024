@@ -18,14 +18,29 @@ and our own development tests. GTest is used for tests.
 
 ## Usage
 
-## Compilation
+## Compilation on Linux and MacOS
 
-Compilation on Linux requires cmake and CXX compiler (e.g., g++).
+Compilation on Linux and MacOS requires cmake and CXX compiler (e.g., g++).
+
+### MacOS
+
+MacOS require a separate installation of `gcc13`.
+
+```bash
+brew install cmake gcc@13
+brew install ninja # optional
+```
+
+### Linux
+
+You know what to do.
 
 ### ninja
 
 ```bash
-cmake -G Ninja -B build
+cmake -G Ninja -B
+# or
+# cmake -G Ninja -B build -D CMAKE_CXX_COMPILER=g++-13 # MacOS
 cd build
 ninja
 ./main
@@ -35,17 +50,19 @@ ninja
 
 ```bash
 cmake -B build
+# or
+# cmake -B build -D CMAKE_CXX_COMPILER=g++-13 # for MacOS
 cd build
 make
 ./main
 ```
 
-Resulting binaries are `build/main` - the program and `build/runtests` to
+### Windows and/or VSCode
+
+Install [CMake](https://cmake.org/download/) and VSCode [CMake Tools extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cmake-tools).
+
+- Open project as root in VSCode.
+- Open **View->Command palette...** or `Ctrl+Shift+P` and run `CMake: Build`.
+
+Resulting binaries are `build/main` -- the program and `build/runtests` to
 run tests specified in `test.cpp`.
-
-## TODOS
-
-- [x] Translate README in Latvian
-- [ ] Windows support
-  - [x] Check the compilation process on Windows
-  - [ ] Add compilation guide
