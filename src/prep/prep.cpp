@@ -5,10 +5,6 @@
 #include <cstdint>
 #include <initializer_list>
 
-int add(int a, int b) {
-    return a + b;
-}
-
 Action::Action(std::string name, bool hasTarget) {
     this->name = name;
     this->hasTarget = hasTarget;

@@ -7,9 +7,6 @@
 #include <string>
 #include <vector>
 
-// For test example
-int add(int a, int b);
-
 // All IDs are uint32_t
 enum EventType {
     PHASE_CHANGE,
@@ -58,7 +55,7 @@ struct Player {
     Role role;
     PlayerStatus playerStatus;
 
-    Player(uint32_t id, std::string username, Role role, PlayerStatus playerStatus);
+    Player(uint32_t id, std : string username, Role role, PlayerStatus playerStatus);
     bool operator==(const Player &other) const;
 };
 
