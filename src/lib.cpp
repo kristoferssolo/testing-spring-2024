@@ -16,8 +16,6 @@ enum VALIDATION_STATUS {
 };
 
 void run() {
-    Room room1(1, "Room 1", 1710087364, RoomStatus::IN_PROGRESS);
-    Room room2(2, "Room 2", 1710087384, RoomStatus::ENDED);
     const Action kill = Action("kill", true);
     const Action heal = Action("heal", true);
     const Action vote = Action("vote", true);
@@ -29,6 +27,8 @@ void run() {
     std::vector<Event> relatedEvents({event2, event3});
     Player player1 = Player("player1", role1, PlayerStatus::ALIVE);
     Player player2 = Player("player2", role1, PlayerStatus::ALIVE);
+    Room room1(1, "Room 1", 1710087364, RoomStatus::IN_PROGRESS, {player1, player2});
+    Room room2(2, "Room 2", 1710087384, RoomStatus::ENDED, {player1, player2});
     int actionValidated = validateAction(&player1, &kill, &room1, &relatedEvents, &player2);
     std::cout << actionValidated << std::endl;
 }

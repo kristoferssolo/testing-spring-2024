@@ -65,8 +65,15 @@ struct Room {
     std::string title;
     std::tm *utcTimestampCreatedAt;
     RoomStatus status;
+    std::vector<Player> players;
 
-    Room(uint32_t id, std::string title, uint32_t utcTimestampCreatedAt, RoomStatus status);
+    Room(
+      uint32_t id, std::string title, uint32_t utcTimestampCreatedAt, RoomStatus status, std::vector<Player> players);
+    Room(uint32_t id,
+         std::string title,
+         uint32_t utcTimestampCreatedAt,
+         RoomStatus status,
+         std::initializer_list<Player> players);
 };
 
 struct Event {
