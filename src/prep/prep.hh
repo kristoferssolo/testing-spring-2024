@@ -1,7 +1,6 @@
 #ifndef PREP_H
 #define PREP_H
 
-#include <chrono>
 #include <cstdint>
 #include <ctime>
 #include <string>
@@ -55,7 +54,7 @@ struct Player {
     Role role;
     PlayerStatus playerStatus;
 
-    Player(uint32_t id, std : string username, Role role, PlayerStatus playerStatus);
+    Player(uint32_t id, std::string username, Role role, PlayerStatus playerStatus);
     bool operator==(const Player &other) const;
 };
 
