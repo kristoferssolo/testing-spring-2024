@@ -2,7 +2,7 @@
 
 [![Tests](https://github.com/jorenchik/testing-spring-2024/actions/workflows/test.yml/badge.svg)](https://github.com/jorenchik/testing-spring-2024/actions/workflows/test.yml)
 
-[Latvian](./README-lv.md)
+[Latvian Description](./README-lv.md)
 
 ## Project
 
@@ -25,7 +25,7 @@ Compilation on Linux requires cmake and CXX compiler (e.g., g++).
 ### ninja
 
 ```bash
-cmake -G ninja -B build
+cmake -G Ninja -B build
 cd build
 ninja
 ./main

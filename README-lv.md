@@ -3,6 +3,7 @@
 [![Tests](https://github.com/jorenchik/testing-spring-2024/actions/workflows/test.yml/badge.svg)](https://github.com/jorenchik/testing-spring-2024/actions/workflows/test.yml)
 
 ## Projekts
+
 Šis ir vienkāršs C++ projekts, kas ietver funkciju mūsu kolēģiem
 testēšanai. Funkcija (t.i., galvenā funkcija un tajā izmantotās apakšfunkcijas)
 atrodas `lib.cpp`.
@@ -12,7 +13,7 @@ atrodas `lib.cpp`.
 Mūsu bibliotēka `prep` ir saistīta ar datu sagatavošanu pirms funkcijas
 izsaukuma. `test.cpp` ir viens testa fails, kurā būs mūsu kolēģu testi
 un mūsu pašu izstrādes testi. GTest tiek izmantots testiem.
- 
+
 ## Lietojums
 
 ## Kompilācija
@@ -22,7 +23,7 @@ Kompilācijai operētājsistēmā Linux ir nepieciešams cmake un CXX kompilator
 ### ninja
 
 ```bash
-cmake -G ninja -B build
+cmake -G Ninja -B build
 cd build
 ninja
 ./main
