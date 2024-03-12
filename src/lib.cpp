@@ -40,7 +40,6 @@ void run() {
 
 int validateAction(
   Player *actor, const Action *action, Room *room, std::vector<Event> *relatedEvents, Player *target = nullptr) {
-    // null checks
     if (!actor) {
         return NO_ACTOR;
     }
@@ -53,7 +52,6 @@ int validateAction(
     if (!relatedEvents) {
         return NO_RELATED_EVENTS;
     }
-    // actual validation
     if (!playerBelongsToRoom(actor, room)) {
         return PLAYER_NOT_IN_ROOM;
     }
