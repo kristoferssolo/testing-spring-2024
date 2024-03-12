@@ -3,6 +3,7 @@
 #include "prep/prep.hh"
 
 #include <algorithm>
+#include <cstdio>
 #include <iostream>
 #include <ostream>
 #include <vector>
@@ -32,7 +33,7 @@ void run() {
     Room room1(1, "Room 1", 1710087364, RoomStatus::IN_PROGRESS, {});
     Room room2(2, "Room 2", 1710087384, RoomStatus::ENDED, {player1, player2});
     int actionValidated = validateAction(&player1, &kill, &room1, &relatedEvents, &player2);
-    std::cout << actionValidated << std::endl;
+    printf("The action validation result is %u\n", actionValidated);
 }
 
 int validateAction(
