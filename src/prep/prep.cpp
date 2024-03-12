@@ -46,7 +46,6 @@ Event::Event(std::string title,
              uint32_t utcTimestampCreatedAt,
              uint32_t numberNight,
              bool isVisible,
-             std::vector<Action> causedBy,
              std::vector<Action> prohibits,
              std::vector<Action> allows):
     title(title),
@@ -54,9 +53,6 @@ Event::Event(std::string title,
     numberNight(numberNight),
     isVisible(isVisible) {
     this->utcTimestampCreatedAt = createUTCTimestamp(utcTimestampCreatedAt);
-    for (auto &a : causedBy) {
-        this->causedBy.push_back(a);
-    }
     for (auto &a : prohibits) {
         this->prohibits.push_back(a);
     }
@@ -69,14 +65,12 @@ Event::Event(std::string title,
              uint32_t utcTimestampCreatedAt,
              uint32_t numberNight,
              bool isVisible,
-             std::initializer_list<Action> causedBy,
              std::initializer_list<Action> prohibits,
              std::initializer_list<Action> allows):
     Event(title,
           utcTimestampCreatedAt,
           numberNight,
           isVisible,
-          std::vector<Action>(causedBy),
           std::vector<Action>(prohibits),
           std::vector<Action>(allows)) {
     this->utcTimestampCreatedAt = createUTCTimestamp(utcTimestampCreatedAt);

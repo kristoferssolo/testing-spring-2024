@@ -23,9 +23,9 @@ void run() {
     const Action vote = Action("vote", true);
     Role role1({vote, kill, heal});
     Role role2({heal});
-    Event event1 = Event("Event 1", 1710087355, 1, true, {vote}, {}, {});
-    Event event2 = Event("Event 2", 1710087363, 1, true, {}, {kill}, {});
-    Event event3 = Event("Event 3", 1710087369, 1, true, {}, {}, {kill});
+    Event event1 = Event("Event 1", 1710087355, 1, true, {}, {});
+    Event event2 = Event("Event 2", 1710087363, 1, true, {kill}, {});
+    Event event3 = Event("Event 3", 1710087369, 1, true, {}, {kill});
     std::vector<Event> relatedEvents({event2, event3});
     Player player1 = Player("player1", role1, PlayerStatus::ALIVE);
     Player player2 = Player("player2", role1, PlayerStatus::ALIVE);
