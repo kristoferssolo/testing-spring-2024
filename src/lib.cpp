@@ -4,17 +4,19 @@
 
 #include <algorithm>
 #include <cstdio>
-#include <iostream>
-#include <ostream>
 #include <vector>
 
 enum VALIDATION_STATUS {
     PLAYER_NOT_IN_ROOM,
-    NO_PLAYER,
     NO_TARGET_PLAYER_SPECIFIED,
     ROOM_NOT_IN_PROGRESS,
+    ACTION_DOES_NOT_BELONG_TO_ROLE,
     ACTION_PROHIBITED,
+    NO_ACTOR,
+    NO_ACTION,
     NO_ROLE,
+    NO_ROOM,
+    NO_RELATED_EVENTS,
     ACTION_VALID,
 };
 
@@ -30,19 +32,30 @@ void run() {
     std::vector<Event> relatedEvents({event2, event3});
     Player player1 = Player(69, "player1", role1, PlayerStatus::ALIVE);
     Player player2 = Player(420, "player2", role1, PlayerStatus::ALIVE);
-    Room room1(1, "Room 1", 1710087364, RoomStatus::IN_PROGRESS, {});
-    Room room2(2, "Room 2", 1710087384, RoomStatus::ENDED, {player1, player2});
+    Room room1(1, "Room 1", 1710087364, RoomStatus::IN_PROGRESS, {player1, player2});
+    Room room2(2, "Room 2", 1710087384, RoomStatus::ENDED, {});
     int actionValidated = validateAction(&player1, &kill, &room1, &relatedEvents, &player2);
     printf("The action validation result is %u\n", actionValidated);
 }
 
 int validateAction(
   Player *actor, const Action *action, Room *room, std::vector<Event> *relatedEvents, Player *target = nullptr) {
+    // null checks
+    if (!actor) {
+        return NO_ACTOR;
+    }
+    if (!action) {
+        return NO_ACTION;
+    }
+    if (!room) {
+        return NO_ROOM;
+    }
+    if (!relatedEvents) {
+        return NO_RELATED_EVENTS;
+    }
+    // actual validation
     if (!playerBelongsToRoom(actor, room)) {
         return PLAYER_NOT_IN_ROOM;
-    }
-    if (!actor) {
-        return NO_PLAYER;
     }
     if (action->hasTarget && !target) {
         return NO_TARGET_PLAYER_SPECIFIED;
@@ -55,7 +68,7 @@ int validateAction(
         return NO_ROLE;
     }
     if (!actionBelongsToRole(role, action)) {
-        return ACTION_PROHIBITED;
+        return ACTION_DOES_NOT_BELONG_TO_ROLE;
     }
     if (!isActionAllowed(action, relatedEvents)) {
         return ACTION_PROHIBITED;
