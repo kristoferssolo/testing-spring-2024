@@ -10,6 +10,7 @@
 enum VALIDATION_STATUS {
     PLAYER_NOT_IN_ROOM,
     NO_PLAYER,
+    NO_TARGET_PLAYER_SPECIFIED,
     ROOM_NOT_IN_PROGRESS,
     ACTION_PROHIBITED,
     NO_ROLE,
@@ -43,7 +44,7 @@ int validateAction(
         return NO_PLAYER;
     }
     if (action->hasTarget && !target) {
-        return NO_PLAYER;
+        return NO_TARGET_PLAYER_SPECIFIED;
     }
     if (room->status != RoomStatus::IN_PROGRESS) {
         return ROOM_NOT_IN_PROGRESS;
