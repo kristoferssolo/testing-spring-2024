@@ -26,6 +26,8 @@ Compilation on Linux and MacOS requires cmake and CXX compiler (e.g., g++).
 
 MacOS require a separate installation of `gcc13`.
 
+#### Using [Homebrew](https://brew.sh/)
+
 ```bash
 brew install cmake gcc@13
 brew install ninja # optional
@@ -59,10 +61,9 @@ make
 
 ### Windows and/or VSCode
 
-Install [CMake](https://cmake.org/download/) and VSCode [CMake Tools extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cmake-tools).
+Install [CMake](https://cmake.org/download/) and VSCode [CMake Tools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cmake-tools) extension.
 
 - Open project as root in VSCode.
-- Open **View->Command palette...** or `Ctrl+Shift+P` and run `CMake: Build`.
+- Press **View->Command palette...** or `Ctrl+Shift+P` and run `CMake: Build`.
 
-Resulting binaries are `build/main` -- the program and `build/runtests` to
-run tests specified in `test.cpp`.
+Resulting binaries are `build/main` -- the program and `build/runtests` to run tests specified in `test.cpp`.
