@@ -96,7 +96,3 @@ bool isActionAllowed(const Action *action, std::vector<Event> *relevantEvents) {
     }
     return allowed;
 }
-
-int functionToTest(int a) {
-    return a * 2;
-}
