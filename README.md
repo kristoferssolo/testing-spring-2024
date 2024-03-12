@@ -46,4 +46,6 @@ run tests specified in `test.cpp`.
 ## TODOS
 
 - [x] Translate README in Latvian
-- [ ] Check the compilation process on Windows and add description in README
+- [ ] Windows support
+  - [x] Check the compilation process on Windows
+  - [ ] Add compilation guide
