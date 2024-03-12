@@ -1,14 +1,10 @@
 #ifndef PREP_H
 #define PREP_H
 
-#include <chrono>
 #include <cstdint>
 #include <ctime>
 #include <string>
 #include <vector>
-
-// For test example
-int add(int a, int b);
 
 // All IDs are uint32_t
 enum EventType {
@@ -53,11 +49,13 @@ struct Role {
 };
 
 struct Player {
+    uint32_t id;
     std::string username;
     Role role;
     PlayerStatus playerStatus;
 
-    Player(std::string username, Role role, PlayerStatus playerStatus);
+    Player(uint32_t id, std::string username, Role role, PlayerStatus playerStatus);
+    bool operator==(const Player &other) const;
 };
 
 struct Room {
@@ -65,8 +63,15 @@ struct Room {
     std::string title;
     std::tm *utcTimestampCreatedAt;
     RoomStatus status;
+    std::vector<Player> players;
 
-    Room(uint32_t id, std::string title, uint32_t utcTimestampCreatedAt, RoomStatus status);
+    Room(
+      uint32_t id, std::string title, uint32_t utcTimestampCreatedAt, RoomStatus status, std::vector<Player> players);
+    Room(uint32_t id,
+         std::string title,
+         uint32_t utcTimestampCreatedAt,
+         RoomStatus status,
+         std::initializer_list<Player> players);
 };
 
 struct Event {
@@ -74,7 +79,6 @@ struct Event {
     std::tm *utcTimestampCreatedAt;
     uint32_t numberNight;
     bool isVisible;
-    std::vector<Action> causedBy;
     std::vector<Action> prohibits;
     std::vector<Action> allows;
 
@@ -86,14 +90,12 @@ struct Event {
           uint32_t utcTimestampCreatedAt,
           uint32_t numberNight,
           bool isVisible,
-          std::vector<Action> causedBy,
           std::vector<Action> prohibits,
           std::vector<Action> allows);
     Event(std::string title,
           uint32_t utcTimestampCreatedAt,
           uint32_t numberNight,
           bool isVisible,
-          std::initializer_list<Action> causedBy,
           std::initializer_list<Action> prohibits,
           std::initializer_list<Action> allows);
 };

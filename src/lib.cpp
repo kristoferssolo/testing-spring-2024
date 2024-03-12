@@ -3,43 +3,60 @@
 #include "prep/prep.hh"
 
 #include <algorithm>
-#include <iostream>
-#include <ostream>
+#include <cstdio>
 #include <vector>
 
 enum VALIDATION_STATUS {
-    NO_PLAYER,
+    PLAYER_NOT_IN_ROOM,
+    NO_TARGET_PLAYER_SPECIFIED,
     ROOM_NOT_IN_PROGRESS,
+    ACTION_DOES_NOT_BELONG_TO_ROLE,
     ACTION_PROHIBITED,
+    NO_ACTOR,
+    NO_ACTION,
     NO_ROLE,
+    NO_ROOM,
+    NO_RELATED_EVENTS,
     ACTION_VALID,
 };
 
 void run() {
-    Room room1(1, "Room 1", 1710087364, RoomStatus::IN_PROGRESS);
-    Room room2(2, "Room 2", 1710087384, RoomStatus::ENDED);
     const Action kill = Action("kill", true);
     const Action heal = Action("heal", true);
     const Action vote = Action("vote", true);
     Role role1({vote, kill, heal});
     Role role2({heal});
-    Event event1 = Event("Event 1", 1710087355, 1, true, {vote}, {}, {});
-    Event event2 = Event("Event 2", 1710087363, 1, true, {}, {kill}, {});
-    Event event3 = Event("Event 3", 1710087369, 1, true, {}, {}, {kill});
+    Event event1 = Event("Event 1", 1710087355, 1, true, {}, {});
+    Event event2 = Event("Event 2", 1710087363, 1, true, {kill}, {});
+    Event event3 = Event("Event 3", 1710087369, 1, true, {}, {kill});
     std::vector<Event> relatedEvents({event2, event3});
-    Player player1 = Player("player1", role1, PlayerStatus::ALIVE);
-    Player player2 = Player("player2", role1, PlayerStatus::ALIVE);
+    Player player1 = Player(69, "player1", role1, PlayerStatus::ALIVE);
+    Player player2 = Player(420, "player2", role1, PlayerStatus::ALIVE);
+    Room room1(1, "Room 1", 1710087364, RoomStatus::IN_PROGRESS, {player1, player2});
+    Room room2(2, "Room 2", 1710087384, RoomStatus::ENDED, {});
     int actionValidated = validateAction(&player1, &kill, &room1, &relatedEvents, &player2);
-    std::cout << actionValidated << std::endl;
+    printf("The action validation result is %u\n", actionValidated);
 }
 
 int validateAction(
   Player *actor, const Action *action, Room *room, std::vector<Event> *relatedEvents, Player *target = nullptr) {
     if (!actor) {
-        return NO_PLAYER;
+        return NO_ACTOR;
+    }
+    if (!action) {
+        return NO_ACTION;
+    }
+    if (!room) {
+        return NO_ROOM;
+    }
+    if (!relatedEvents) {
+        return NO_RELATED_EVENTS;
+    }
+    if (!playerBelongsToRoom(actor, room)) {
+        return PLAYER_NOT_IN_ROOM;
     }
     if (action->hasTarget && !target) {
-        return NO_PLAYER;
+        return NO_TARGET_PLAYER_SPECIFIED;
     }
     if (room->status != RoomStatus::IN_PROGRESS) {
         return ROOM_NOT_IN_PROGRESS;
@@ -49,12 +66,16 @@ int validateAction(
         return NO_ROLE;
     }
     if (!actionBelongsToRole(role, action)) {
-        return ACTION_PROHIBITED;
+        return ACTION_DOES_NOT_BELONG_TO_ROLE;
     }
     if (!isActionAllowed(action, relatedEvents)) {
         return ACTION_PROHIBITED;
     }
     return ACTION_VALID;
+}
+
+bool playerBelongsToRoom(Player *player, Room *room) {
+    return std::find(room->players.begin(), room->players.end(), *player) != room->players.end();
 }
 
 bool actionBelongsToRole(Role *role, const Action *action) {
@@ -74,8 +95,4 @@ bool isActionAllowed(const Action *action, std::vector<Event> *relevantEvents) {
         }
     }
     return allowed;
-}
-
-int functionToTest(int a) {
-    return a * 2;
 }
