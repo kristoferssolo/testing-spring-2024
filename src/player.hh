@@ -6,20 +6,22 @@
 #include <cstdint>
 #include <string>
 
-enum PlayerStatus {
-    Kicked,
-    Alive,
-    Dead,
-    VotedOut,
-};
+namespace player {
+    enum Status {
+        Kicked,
+        Alive,
+        Dead,
+        VotedOut,
+    };
+}
 
 struct Player {
     uint32_t id;
     std::string username;
     Role role;
-    PlayerStatus status;
+    player::Status status;
 
-    Player(uint32_t id, std::string username, Role role, PlayerStatus status);
+    Player(uint32_t id, std::string username, Role role, player::Status status);
     bool operator==(const Player &other) const;
 };
 
