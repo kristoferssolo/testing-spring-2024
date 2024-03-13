@@ -5,12 +5,6 @@
 #include <cstdint>
 #include <initializer_list>
 
-Role::Role(std::initializer_list<Action> actions): Role(std::vector<Action>(actions)) {
-}
-
-Role::Role(std::vector<Action> actions): actions(actions) {
-}
-
 Player::Player(uint32_t id, std::string username, Role role, PlayerStatus playerStatus):
     id(id),
     username(username),

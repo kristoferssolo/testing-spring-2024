@@ -28,17 +28,9 @@ enum PlayerStatus {
     VOTED_OUT,
 };
 
-struct Role;
 struct Player;
 struct Room;
 struct Event;
-
-struct Role {
-    std::vector<Action> actions;
-
-    Role(std::initializer_list<Action> actions);
-    Role(std::vector<Action> actions);
-};
 
 struct Player {
     uint32_t id;

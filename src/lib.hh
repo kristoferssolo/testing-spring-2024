@@ -1,5 +1,6 @@
 #include "action.hh"
 #include "prep/prep.hh"
+#include "role.hh"
 
 bool playerBelongsToRoom(Player *player, Room *room);
 bool actionBelongsToRole(Role *role, const Action *action);
