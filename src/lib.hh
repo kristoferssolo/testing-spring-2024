@@ -2,6 +2,7 @@
 #include "player.hh"
 #include "prep/prep.hh"
 #include "role.hh"
+#include "room.hh"
 
 bool playerBelongsToRoom(Player *player, Room *room);
 bool actionBelongsToRole(Role *role, const Action *action);

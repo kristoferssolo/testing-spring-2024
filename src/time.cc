@@ -1,10 +1,8 @@
-#include "timeUtils.hh"
-
 #include <chrono>
 #include <cstdint>
 #include <ctime>
 
-std::tm *createUTCTimestamp(uint32_t timestamp) {
+std::tm *create_utc_imestamp(uint32_t timestamp) {
     // Convert the timestamp into a time_point object
     std::chrono::seconds sec(timestamp);
     std::chrono::time_point<std::chrono::system_clock> tp(sec);
