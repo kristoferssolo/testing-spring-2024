@@ -12,4 +12,4 @@ struct Role {
     Role(std::vector<Action> actions);
 };
 
-#endif  // ROLE_HH
+#endif  // !ROLE_HH

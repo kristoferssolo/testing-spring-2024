@@ -10,4 +10,4 @@ struct Action {
     bool operator==(const Action &other) const;
 };
 
-#endif  // ACTION_HH
+#endif  // !ACTION_HH

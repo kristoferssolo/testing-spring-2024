@@ -21,26 +21,8 @@ enum RoomStatus {
     ENDED,
 };
 
-enum PlayerStatus {
-    KICKED,
-    ALIVE,
-    DEAD,
-    VOTED_OUT,
-};
-
-struct Player;
 struct Room;
 struct Event;
-
-struct Player {
-    uint32_t id;
-    std::string username;
-    Role role;
-    PlayerStatus playerStatus;
-
-    Player(uint32_t id, std::string username, Role role, PlayerStatus playerStatus);
-    bool operator==(const Player &other) const;
-};
 
 struct Room {
     uint32_t id;

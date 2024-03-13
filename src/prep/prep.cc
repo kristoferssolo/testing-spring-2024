@@ -5,17 +5,6 @@
 #include <cstdint>
 #include <initializer_list>
 
-Player::Player(uint32_t id, std::string username, Role role, PlayerStatus playerStatus):
-    id(id),
-    username(username),
-    role(role),
-    playerStatus(playerStatus) {
-}
-
-bool Player::operator==(const Player &other) const {
-    return this->id == other.id;
-}
-
 Room::Room(
   uint32_t id, std::string title, uint32_t utcTimestampCreatedAt, RoomStatus status, std::vector<Player> players):
     id(id),

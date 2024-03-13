@@ -1,4 +1,5 @@
 #include "action.hh"
+#include "player.hh"
 #include "prep/prep.hh"
 #include "role.hh"
 
