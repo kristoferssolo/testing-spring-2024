@@ -1,4 +1,4 @@
-#include "lib.hh"
+#include "./lib.hh"
 
 #include <stdlib.h>
 

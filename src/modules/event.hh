@@ -1,7 +1,7 @@
 #ifndef EVENT_HH
 #define EVENT_HH
 
-#include "action.hh"
+#include "./action.hh"
 
 #include <cstdint>
 #include <ctime>
@@ -16,7 +16,7 @@ namespace event {
         RoomStateChange,
         PlayerStateChange,
     };
-}
+}  // namespace event
 
 struct Event {
     std::string title;

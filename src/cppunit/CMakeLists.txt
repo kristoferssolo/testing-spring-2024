@@ -1,1 +1,1 @@
-add_library(ccunit ccunit.cc ccunit.hh)
+add_library(cppunit cppunit.cc cppunit.hh)

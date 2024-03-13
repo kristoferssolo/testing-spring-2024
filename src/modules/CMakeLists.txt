@@ -1,0 +1,14 @@
+add_library(
+  modules
+  action.cc
+  action.hh
+  event.cc
+  event.hh
+  player.cc
+  player.hh
+  role.cc
+  role.hh
+  room.cc
+  room.hh
+  time.cc
+  time.hh)

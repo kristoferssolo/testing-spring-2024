@@ -1,9 +1,11 @@
 #ifndef VALIDATION_HH
 #define VALIDATION_HH
 
-#include "event.hh"
-#include "player.hh"
-#include "room.hh"
+#include "modules/event.hh"
+#include "modules/player.hh"
+#include "modules/room.hh"
+
+#include <vector>
 
 namespace validation {
     enum Status {
@@ -19,7 +21,7 @@ namespace validation {
         NoRelatedEvents,
         ActionValid,
     };
-}
+}  // namespace validation
 
 int validateAction(Player *actor, const Action *action, Room *room, std::vector<Event> *relatedEvents, Player *target);
 

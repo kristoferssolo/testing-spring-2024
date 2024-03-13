@@ -1,6 +1,6 @@
-#include "room.hh"
+#include "./room.hh"
 
-#include "time.hh"
+#include "./time.hh"
 
 #include <cstdint>
 #include <initializer_list>

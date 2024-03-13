@@ -1,7 +1,7 @@
-#include "event.hh"
+#include "./event.hh"
 
-#include "action.hh"
-#include "time.hh"
+#include "./action.hh"
+#include "./time.hh"
 
 #include <initializer_list>
 #include <string>

@@ -9,13 +9,13 @@ project(
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-add_subdirectory(src/ccunit)
-add_subdirectory(src/prep)
+add_subdirectory(src/cppunit)
+add_subdirectory(src/modules)
 
 add_executable(main src/main.cc)
-add_library(lib src/lib.cc src/lib.hh)
+add_library(lib src/lib.cc src/lib.hh src/validation.cc src/validation.hh)
 target_link_libraries(main PUBLIC lib)
-target_link_libraries(lib PUBLIC prepLib)
+target_link_libraries(lib PUBLIC modules)
 target_include_directories(main PUBLIC "${PROJECT_BINARY_DIR}"
                                        "${PROJECT_SOURCE_DIR}/prep")
 target_include_directories(lib PUBLIC "${PROJECT_BINARY_DIR}"

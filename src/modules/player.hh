@@ -1,7 +1,7 @@
 #ifndef PLAYER_HH
 #define PLAYER_HH
 
-#include "role.hh"
+#include "./role.hh"
 
 #include <cstdint>
 #include <string>
@@ -13,7 +13,7 @@ namespace player {
         Dead,
         VotedOut,
     };
-}
+}  // namespace player
 
 struct Player {
     uint32_t id;

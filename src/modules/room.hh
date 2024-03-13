@@ -1,7 +1,7 @@
 #ifndef ROOM_HH
 #define ROOM_HH
 
-#include "player.hh"
+#include "./player.hh"
 
 #include <cstdint>
 #include <ctime>
@@ -16,7 +16,7 @@ namespace room {
         Stopped,
         Ended,
     };
-}
+}  // namespace room
 
 struct Room {
     uint32_t id;

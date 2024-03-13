@@ -1,6 +1,6 @@
-#include "player.hh"
+#include "./player.hh"
 
-#include "role.hh"
+#include "./role.hh"
 
 #include <string>
 
