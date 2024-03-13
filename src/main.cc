@@ -1,4 +1,4 @@
-#include "./lib.hh"
+#include "./validation.hh"
 
 #include <stdlib.h>
 
@@ -16,7 +16,7 @@ int main(int argc, char *argv[]) {
     Player player2 = Player(420, "player2", role1, player::Alive);
     Room room1(1, "Room 1", 1710087364, room::InProgress, {player1, player2});
     Room room2(2, "Room 2", 1710087384, room::Ended, {});
-    int actionValidated = validateAction(&player1, &kill, &room1, &relatedEvents, &player2);
-    printf("The action validation result is %u\n", actionValidated);
+    int validated_action = validate_action(&player1, &kill, &room1, &relatedEvents, &player2);
+    printf("The action validation result is %u\n", validated_action);
     return EXIT_SUCCESS;
 }

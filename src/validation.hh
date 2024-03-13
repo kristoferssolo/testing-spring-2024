@@ -23,6 +23,6 @@ namespace validation {
     };
 }  // namespace validation
 
-int validateAction(Player *actor, const Action *action, Room *room, std::vector<Event> *relatedEvents, Player *target);
+int validate_action(Player *actor, const Action *action, Room *room, std::vector<Event> *relatedEvents, Player *target);
 
 #endif  // !VALIDATION_HH

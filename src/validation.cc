@@ -27,7 +27,7 @@ bool is_action_allowed(const Action *action, std::vector<Event> *relevantEvents)
     return allowed;
 }
 
-int validateAction(
+int validate_action(
   Player *actor, const Action *action, Room *room, std::vector<Event> *relatedEvents, Player *target = nullptr) {
     if (!actor) {
         return validation::NoActor;
