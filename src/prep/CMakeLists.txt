@@ -1,1 +1,1 @@
-add_library(prepLib prep.cpp prep.hh timeUtils.cpp timeUtils.hh)
+add_library(prepLib prep.cc prep.hh timeUtils.cc timeUtils.hh)
