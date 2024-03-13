@@ -5,24 +5,6 @@
 #include <cstdint>
 #include <initializer_list>
 
-Room::Room(
-  uint32_t id, std::string title, uint32_t utcTimestampCreatedAt, RoomStatus status, std::vector<Player> players):
-    id(id),
-    title(title),
-    status(status),
-    players(players) {
-    this->utcTimestampCreatedAt = createUTCTimestamp(utcTimestampCreatedAt);
-}
-
-Room::Room(uint32_t id,
-           std::string title,
-           uint32_t utcTimestampCreatedAt,
-           RoomStatus status,
-           std::initializer_list<Player> players):
-    Room(id, title, utcTimestampCreatedAt, status, std::vector<Player>(players)) {
-    this->utcTimestampCreatedAt = createUTCTimestamp(utcTimestampCreatedAt);
-}
-
 Event::Event(std::string title,
              uint32_t utcTimestampCreatedAt,
              uint32_t numberNight,
