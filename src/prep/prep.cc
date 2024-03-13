@@ -5,15 +5,6 @@
 #include <cstdint>
 #include <initializer_list>
 
-Action::Action(std::string name, bool hasTarget) {
-    this->name = name;
-    this->hasTarget = hasTarget;
-}
-
-bool Action::operator==(const Action &other) const {
-    return this->name == other.name;
-}
-
 Role::Role(std::initializer_list<Action> actions): Role(std::vector<Action>(actions)) {
 }
 

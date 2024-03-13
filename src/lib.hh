@@ -1,3 +1,4 @@
+#include "action.hh"
 #include "prep/prep.hh"
 
 bool playerBelongsToRoom(Player *player, Room *room);

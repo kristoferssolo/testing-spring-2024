@@ -33,14 +33,6 @@ struct Player;
 struct Room;
 struct Event;
 
-struct Action {
-    std::string name;
-    bool hasTarget;
-
-    Action(std::string name, bool hasTarget);
-    bool operator==(const Action &other) const;
-};
-
 struct Role {
     std::vector<Action> actions;
 
