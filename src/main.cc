@@ -12,10 +12,10 @@ int main(int argc, char *argv[]) {
     Event event2 = Event("Event 2", 1710087363, 1, true, {kill}, {});
     Event event3 = Event("Event 3", 1710087369, 1, true, {}, {kill});
     std::vector<Event> relatedEvents({event2, event3});
-    Player player1 = Player(69, "player1", role1, PlayerStatus::ALIVE);
-    Player player2 = Player(420, "player2", role1, PlayerStatus::ALIVE);
-    Room room1(1, "Room 1", 1710087364, RoomStatus::IN_PROGRESS, {player1, player2});
-    Room room2(2, "Room 2", 1710087384, RoomStatus::ENDED, {});
+    Player player1 = Player(69, "player1", role1, player::Alive);
+    Player player2 = Player(420, "player2", role1, player::Alive);
+    Room room1(1, "Room 1", 1710087364, room::InProgress, {player1, player2});
+    Room room2(2, "Room 2", 1710087384, room::Ended, {});
     int actionValidated = validateAction(&player1, &kill, &room1, &relatedEvents, &player2);
     printf("The action validation result is %u\n", actionValidated);
     return EXIT_SUCCESS;
