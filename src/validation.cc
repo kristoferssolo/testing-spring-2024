@@ -60,38 +60,38 @@ bool is_action_allowed(const Action *action, const std::vector<Event> *relevant_
  * @param target Pointer to the target player (optional, defaults to `nullptr`).
  * @return An integer representing the validation status.
  */
-int validate_action(
+ValidationStatus validate_action(
   Player *actor, const Action *action, Room *room, std::vector<Event> *related_events, Player *target = nullptr) {
     if (!actor) {
-        return validation::NoActor;
+        return ValidationStatus::NoActor;
     }
     if (!action) {
-        return validation::NoAction;
+        return ValidationStatus::NoAction;
     }
     if (!room) {
-        return validation::NoRoom;
+        return ValidationStatus::NoRoom;
     }
     if (!related_events) {
-        return validation::NoRelatedEvents;
+        return ValidationStatus::NoRelatedEvents;
     }
     if (!player_belongs_to_room(actor, room)) {
-        return validation::PlayerNotInRoom;
+        return ValidationStatus::PlayerNotInRoom;
     }
     if (action->has_target && !target) {
-        return validation::NoTargetPlayerSpecified;
+        return ValidationStatus::NoTargetPlayerSpecified;
     }
-    if (room->status != room::Status::InProgress) {
-        return validation::RoomNotInProgress;
+    if (room->status != RoomStatus::InProgress) {
+        return ValidationStatus::RoomNotInProgress;
     }
     Role *role = &actor->role;
     if (!role) {
-        return validation::NoRole;
+        return ValidationStatus::NoRole;
     }
     if (!action_belongs_to_role(role, action)) {
-        return validation::ActionDoesNotBelongToRole;
+        return ValidationStatus::ActionDoesNotBelongToRole;
     }
     if (!is_action_allowed(action, related_events)) {
-        return validation::ActionProhibited;
+        return ValidationStatus::ActionProhibited;
     }
-    return validation::ActionProhibited;
+    return ValidationStatus::ActionProhibited;
 }

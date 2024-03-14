@@ -5,20 +5,20 @@
 
 #include <vector>
 
-namespace validation {
-    enum Status {
-        PlayerNotInRoom,
-        NoTargetPlayerSpecified,
-        RoomNotInProgress,
-        ActionDoesNotBelongToRole,
-        ActionProhibited,
-        NoActor,
-        NoAction,
-        NoRole,
-        NoRoom,
-        NoRelatedEvents,
-        ActionValid,
-    };
-}  // namespace validation
+enum class ValidationStatus {
+    PlayerNotInRoom,
+    NoTargetPlayerSpecified,
+    RoomNotInProgress,
+    ActionDoesNotBelongToRole,
+    ActionProhibited,
+    NoActor,
+    NoAction,
+    NoRole,
+    NoRoom,
+    NoRelatedEvents,
+    ActionValid,
+};
 
-int validate_action(Player *actor, const Action *action, Room *room, std::vector<Event> *relatedEvents, Player *target);
+
+ValidationStatus
+  validate_action(Player *actor, const Action *action, Room *room, std::vector<Event> *relatedEvents, Player *target);

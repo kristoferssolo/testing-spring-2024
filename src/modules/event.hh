@@ -8,14 +8,12 @@
 #include <string>
 #include <vector>
 
-namespace event {
-    enum Type {
-        PhaseChange,
-        EventAction,
-        RoomStateChange,
-        PlayerStateChange,
-    };
-}  // namespace event
+enum EventType {
+    PhaseChange,
+    EventAction,
+    RoomStateChange,
+    PlayerStateChange,
+};
 
 struct Event {
     std::string title;
