@@ -7,6 +7,7 @@
 #include "modules/room.hh"
 
 #include <algorithm>
+#include <string>
 
 /**
  * Check if a player belongs to a given room.
@@ -94,4 +95,21 @@ ValidationStatus validate_action(
         return ValidationStatus::ActionProhibited;
     }
     return ValidationStatus::ActionProhibited;
+}
+
+std::string ValidationStatusUtils::to_string(ValidationStatus status) {
+    switch (status) {
+        case ValidationStatus::PlayerNotInRoom: return "player not in room";
+        case ValidationStatus::NoTargetPlayerSpecified: return "no target player specified";
+        case ValidationStatus::RoomNotInProgress: return "room not in progress";
+        case ValidationStatus::ActionDoesNotBelongToRole: return "action does not belong to role";
+        case ValidationStatus::ActionProhibited: return "action prohibited";
+        case ValidationStatus::NoActor: return "no actor";
+        case ValidationStatus::NoAction: return "no action";
+        case ValidationStatus::NoRole: return "no role";
+        case ValidationStatus::NoRoom: return "no room";
+        case ValidationStatus::NoRelatedEvents: return "no relevant events";
+        case ValidationStatus::ActionValid: return "action valid";
+        default: return "unknown validation status";
+    }
 }
