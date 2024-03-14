@@ -7,14 +7,14 @@
 ## Project
 
 This is a simple C++ project that includes the function for our colleagues to
-test. The function (i.e., the main function and the subfunctions used in it) is
-located in `lib.cpp`.
+test. The function (i.e., the subfunctions that are used in main function) is
+located in `validation.cc`.
 
 ## Additional libraries and executable
 
-Our library `prep` is concerned with preparation of data prior to the function
-call. `test.cpp` is a single test file that will contain the tests of our colleagues
-and our own development tests. GTest is used for tests.
+Directory `modules` is concerned with preparation of data prior to the function
+call. `test_validation.cc` is a single test file that contain the tests.
+[GTest](https://github.com/google/googletest) is used for tests.
 
 ## Usage
 
@@ -61,9 +61,12 @@ make
 
 ### Windows and/or VSCode
 
-Install [CMake](https://cmake.org/download/) and VSCode [CMake Tools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cmake-tools) extension.
+Install [CMake](https://cmake.org/download/) and VSCode
+[CMake Tools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cmake-tools)
+extension.
 
 - Open project as root in VSCode.
 - Press **View->Command palette...** or `Ctrl+Shift+P` and run `CMake: Build`.
 
-Resulting binaries are `build/main` -- the program and `build/runtests` to run tests specified in `test.cpp`.
+Resulting binaries are `build/main` -- the program and `build/test_validation`
+to run tests specified in `test_validation.cc`.

@@ -5,20 +5,21 @@
 ## Projekts
 
 Šis ir vienkāršs C++ projekts, kas ietver funkciju mūsu kolēģiem
-testēšanai. Funkcija (t.i., galvenā funkcija un tajā izmantotās apakšfunkcijas)
-atrodas `lib.cpp`.
+testēšanai. Funkcija, t.i., apakšfunkcijas, kuru nepieciešams testēt
+atrodas `validation.cc`.
 
 ## Papildu bibliotēkas un izpildāmā programma
 
-Mūsu bibliotēka `prep` ir saistīta ar datu sagatavošanu pirms funkcijas
-izsaukuma. `test.cpp` ir viens testa fails, kurā būs mūsu kolēģu testi
-un mūsu pašu izstrādes testi. GTest tiek izmantots testiem.
+Direktorija `modules` ir saistīta ar datu sagatavošanu pirms funkcijas
+izsaukuma. `test_validation.cc` ir viens testa fails, kas satur testus.
+[GTest](https://github.com/google/googletest) tiek izmantots testiem.
 
 ## Lietojums
 
 ## Kompilācija uz Linux un MacOS
 
-Kompilācijai operētājsistēmā Linux ir nepieciešams cmake un CXX kompilators (e.g., g++).
+Kompilācijai operētājsistēmā Linux ir nepieciešams cmake un
+CXX kompilators (e.g., g++).
 
 ### MacOS
 
@@ -59,10 +60,15 @@ make
 
 ### Windows un/vai VSCode
 
-Uzstādiet [CMake](https://cmake.org/download/) un VSCode [CMake Tools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cmake-tools) paplašinājumu.
+Uzstādiet [CMake](https://cmake.org/download/) un VSCode
+[CMake Tools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cmake-tools)
+paplašinājumu.
 
-- Atveriet projektu kā saknes direktoriju VSCode.
-- Izvēlaties **View->Command palete...** vai `Ctrl+Shift+P` un palaidiet `CMake: Build`.
+- Atveriet projektu kā saknes direktoriju
+    VSCode.
+- Izvēlaties **View->Command palete...** vai
+    `Ctrl+Shift+P` un palaidiet `CMake: Build`.
 
-Rezultātā iegūtie binārie faili ir `build/main` - programma un `build/runtests`, lai
-palaistu punktos norādītos testus iekš `test.cpp`.
+Rezultātā iegūtie binārie faili ir `build/main` -- programma un
+`build/test_validation`, lai palaistu norādītos testus
+no `test_validation.cc` faila.
