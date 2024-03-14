@@ -22,4 +22,4 @@ jobs:
           cd build
           ninja
       - name: Run tests
-        run: ./build/runtests
+        run: ctest
