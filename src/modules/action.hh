@@ -1,5 +1,4 @@
-#ifndef ACTION_HH
-#define ACTION_HH
+#pragma once
 #include <string>
 
 struct Action {
@@ -9,5 +8,3 @@ struct Action {
     Action(std::string name, bool has_target);
     bool operator==(const Action &other) const;
 };
-
-#endif  // !ACTION_HH

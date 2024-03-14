@@ -1,5 +1,4 @@
-#ifndef EVENT_HH
-#define EVENT_HH
+#pragma once
 
 #include "./action.hh"
 
@@ -42,5 +41,3 @@ struct Event {
           std::initializer_list<Action> prohibits,
           std::initializer_list<Action> allows);
 };
-
-#endif  // !EVENT_HH

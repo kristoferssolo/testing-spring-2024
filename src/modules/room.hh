@@ -1,5 +1,4 @@
-#ifndef ROOM_HH
-#define ROOM_HH
+#pragma once
 
 #include "./player.hh"
 
@@ -29,5 +28,3 @@ struct Room {
     Room(
       uint32_t id, std::string title, uint32_t created_at, room::Status status, std::initializer_list<Player> players);
 };
-
-#endif  // !ROOM_HH

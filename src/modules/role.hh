@@ -1,5 +1,4 @@
-#ifndef ROLE_HH
-#define ROLE_HH
+#pragma once
 
 #include "./action.hh"
 
@@ -11,5 +10,3 @@ struct Role {
     explicit Role(std::vector<Action> actions);
     Role(std::initializer_list<Action> actions);
 };
-
-#endif  // !ROLE_HH

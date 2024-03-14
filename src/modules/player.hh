@@ -1,6 +1,4 @@
-#ifndef PLAYER_HH
-#define PLAYER_HH
-
+#pragma once
 #include "./role.hh"
 
 #include <cstdint>
@@ -24,5 +22,3 @@ struct Player {
     Player(uint32_t id, std::string username, Role role, player::Status status);
     bool operator==(const Player &other) const;
 };
-
-#endif  // !PLAYER_HH
