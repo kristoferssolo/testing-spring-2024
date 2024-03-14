@@ -8,7 +8,7 @@
 #include <string>
 #include <vector>
 
-enum EventType {
+enum class EventType {
     PhaseChange,
     EventAction,
     RoomStateChange,

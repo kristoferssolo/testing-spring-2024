@@ -38,11 +38,12 @@ bool action_belongs_to_role(const Role *role, const Action *action) {
  * @param relevantEvents Pointer to the vector of relevant events.
  * @return `true` if the action is allowed, otherwise `false`.
  */
-bool is_action_allowed(const Action *action, const std::vector<Event> *relevant_events) {
+bool is_action_allowed(const Action *action, std::vector<Event> *relevant_events) {
     bool allowed = false;  // Actions are disabled by default
+    std::sort(relevant_events->begin(), relevant_events->end());
     for (const auto &event : *relevant_events) {
         if (std::find(event.prohibits.begin(), event.prohibits.end(), *action) != event.prohibits.end()) {
-            return false;  // If action is prohibited, return false immediately
+            allowed = false;
         }
         if (std::find(event.allows.begin(), event.allows.end(), *action) != event.allows.end()) {
             allowed = true;
@@ -94,7 +95,7 @@ ValidationStatus validate_action(
     if (!is_action_allowed(action, related_events)) {
         return ValidationStatus::ActionProhibited;
     }
-    return ValidationStatus::ActionProhibited;
+    return ValidationStatus::ActionValid;
 }
 
 std::string ValidationStatusUtils::to_string(ValidationStatus status) {

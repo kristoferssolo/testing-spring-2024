@@ -19,6 +19,6 @@ int main(int argc, char *argv[]) {
     Room room2(2, "Room 2", 1710087384, RoomStatus::Ended, {});
     ValidationStatus validated_action = validate_action(&player1, &kill, &room1, &relatedEvents, &player2);
     std::string validated_action_str = ValidationStatusUtils::to_string(validated_action);
-    printf("The action validation result is \"%s\"\n", validated_action_str.c_str());
+    printf("The validation result is \"%s\"\n", validated_action_str.c_str());
     return EXIT_SUCCESS;
 }
