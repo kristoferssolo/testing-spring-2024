@@ -15,7 +15,7 @@
  * @param room Pointer to the room object.
  * @return `true` if the player belongs to the room, otherwise `false`.
  */
-bool player_belongs_to_room(Player *player, Room *room) {
+bool player_belongs_to_room(const Player *player, const Room *room) {
     return std::find(room->players.begin(), room->players.end(), *player) != room->players.end();
 }
 
@@ -26,7 +26,7 @@ bool player_belongs_to_room(Player *player, Room *room) {
  * @param action Pointer to the action object.
  * @return `true` if the action belongs to the role, otherwise `false`.
  */
-bool action_belongs_to_role(Role *role, const Action *action) {
+bool action_belongs_to_role(const Role *role, const Action *action) {
     return std::find(role->actions.begin(), role->actions.end(), *action) != role->actions.end();
 }
 
@@ -37,12 +37,11 @@ bool action_belongs_to_role(Role *role, const Action *action) {
  * @param relevantEvents Pointer to the vector of relevant events.
  * @return `true` if the action is allowed, otherwise `false`.
  */
-bool is_action_allowed(const Action *action, std::vector<Event> *relevant_events) {
-    bool allowed = false;  // actions are disabled by default
-    std::sort(relevant_events->begin(), relevant_events->end());
-    for (auto &event : *relevant_events) {
+bool is_action_allowed(const Action *action, const std::vector<Event> *relevant_events) {
+    bool allowed = false;  // Actions are disabled by default
+    for (const auto &event : *relevant_events) {
         if (std::find(event.prohibits.begin(), event.prohibits.end(), *action) != event.prohibits.end()) {
-            allowed = false;
+            return false;  // If action is prohibited, return false immediately
         }
         if (std::find(event.allows.begin(), event.allows.end(), *action) != event.allows.end()) {
             allowed = true;
